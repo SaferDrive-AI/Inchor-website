@@ -5,7 +5,7 @@ import { ProblemSection } from './components/sections/ProblemSection'
 import { WhyNowSection } from './components/sections/WhyNowSection'
 import { EngineSection } from './components/sections/EngineSection'
 import { ApplicationsSection } from './components/sections/ApplicationsSection'
-import { TeamSection } from './components/sections/TeamSection'
+import { CitySection } from './components/sections/CitySection'
 import { CTASection } from './components/sections/CTASection'
 
 export default function App() {
@@ -17,7 +17,7 @@ export default function App() {
       <WhyNowSection />
       <EngineSection />
       <ApplicationsSection />
-      <TeamSection />
+      <CitySection />
       <CTASection />
       <Footer />
     </div>

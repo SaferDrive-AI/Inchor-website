@@ -2,7 +2,7 @@ export const NAV_LINKS = [
   { label: 'Problem', href: '#problem' },
   { label: 'Engine', href: '#engine' },
   { label: 'Applications', href: '#applications' },
-  { label: 'Team', href: '#team' },
+  { label: 'City', href: '#city' },
 ] as const
 
 export const HERO = {
@@ -57,18 +57,54 @@ export const ENGINE = {
       title: 'Build the World',
       description:
         'Multi-camera images, satellite, LiDAR and HD maps go in. An editable 3D world comes out — explore in 3D, rotate, pan, zoom.',
+      bullets: [
+        'Multi-sensor fusion (camera / LiDAR / satellite)',
+        'HD-map alignment',
+        'Editable 3D scene graph',
+      ],
     },
     {
       icon: 'Network' as const,
       title: 'Learn the Agents',
       description:
         'Vehicle trajectories, pedestrian flows, robot routes and ops signals train an Agent Foundation Model that captures intent, behavior and multi-agent interaction.',
+      bullets: [
+        'Trajectory + intent modeling',
+        'Multi-agent interaction',
+        'Self-supervised across worldwide data',
+      ],
     },
     {
       icon: 'Workflow' as const,
       title: 'Roll out the Future',
       description:
         'Test signal changes, lane closures, AGV cadence inside the world. Get back risk, delay, throughput — before deploying to reality.',
+      bullets: [
+        'Counterfactual rollout',
+        'Probabilistic outcome distributions',
+        'Closed-loop with operational data',
+      ],
+    },
+  ],
+  pipelineLabel: 'FOUNDATION MODEL TRAINING',
+  pipeline: [
+    {
+      icon: 'Globe' as const,
+      title: 'Pre-training',
+      body:
+        'Worldwide trajectory, intent and demand data — the base distribution of physical-world behavior.',
+    },
+    {
+      icon: 'Database' as const,
+      title: 'Post-training',
+      body:
+        'Customer data — site-specific behavior, rules and scene context tuned per deployment.',
+    },
+    {
+      icon: 'Sparkles' as const,
+      title: 'Fine-tuning',
+      body:
+        'Counterfactual rollouts that observe, simulate and calibrate the model with every what-if run.',
     },
   ],
   footer: 'Every deployment teaches the agents. Every what-if calibrates the model.',
@@ -101,26 +137,44 @@ export const APPLICATIONS = {
   ],
 }
 
-export const TEAM = {
-  label: 'TEAM & TRACTION',
-  headline: 'Built by the team behind the world\'s first AV test facility.',
-  founders: [
+export const CITY = {
+  label: 'IN THE CITY',
+  headline: 'What-if for urban operations.',
+  subhead:
+    'Cities ship signal changes, lane closures and transit updates every week — without preview. Laplace turns each change into a rehearsal first.',
+  cards: [
     {
-      name: 'Howie Sun',
-      role: 'CEO & Co-founder',
-      bio: 'From Mcity. Researcher → Builder → Seller.',
+      icon: 'TrafficCone' as const,
+      title: 'Signal & lane changes',
+      body:
+        'Rehearse new signal timings or temporary lane closures across the network. See the spillback, the missed throughput, the cascading delays — before a single cone hits the street.',
     },
     {
-      name: 'Henry Liu',
-      role: 'CTO & Co-founder',
-      bio: 'Bruce D. Greenshields Collegiate Professor. Director of UMTRI and Mcity.',
+      icon: 'CalendarClock' as const,
+      title: 'Event & surge planning',
+      body:
+        'Model game-day, concert and protest traffic. Stress-test detours and shuttle routes against the agent population that actually shows up.',
+    },
+    {
+      icon: 'Construction' as const,
+      title: 'Construction detours',
+      body:
+        'Phase a multi-month project and watch the network adapt week by week. Pick the detour plan that loses the fewest hours per commuter.',
+    },
+    {
+      icon: 'BusFront' as const,
+      title: 'Transit reroutes',
+      body:
+        'Test new bus routes, headways and stop relocations against ridership behavior. Surface the trip pairs that quietly get worse.',
     },
   ],
-  stats: [
-    { icon: 'DollarSign' as const, value: '$1.65M', label: 'Federal funding secured' },
-    { icon: 'TrendingUp' as const, value: '$1M+', label: 'In contracts and pipeline' },
-    { icon: 'BookOpen' as const, value: 'Nature', label: 'Cover publication' },
+  outputs: [
+    { icon: 'AlertTriangle' as const, label: 'Risk surfaced' },
+    { icon: 'Timer' as const, label: 'Delay quantified' },
+    { icon: 'Gauge' as const, label: 'Throughput modeled' },
+    { icon: 'Activity' as const, label: 'Cascade traced' },
   ],
+  footer: 'Every signal change becomes a what-if, not a live experiment.',
 }
 
 export const CTA = {

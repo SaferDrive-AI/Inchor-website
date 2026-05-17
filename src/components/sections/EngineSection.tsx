@@ -1,10 +1,11 @@
-import { Layers, Network, Workflow } from 'lucide-react'
+import { Layers, Network, Workflow, Globe, Database, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { ENGINE } from '../../lib/constants'
 import { SectionWrapper } from '../ui/SectionWrapper'
 import { GlowCard } from '../ui/GlowCard'
 
-const icons = { Layers, Network, Workflow }
+const cardIcons = { Layers, Network, Workflow }
+const phaseIcons = { Globe, Database, Sparkles }
 
 export function EngineSection() {
   return (
@@ -20,7 +21,7 @@ export function EngineSection() {
 
       <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {ENGINE.cards.map((card, i) => {
-          const Icon = icons[card.icon]
+          const Icon = cardIcons[card.icon]
           const step = String(i + 1).padStart(2, '0')
           return (
             <motion.div
@@ -30,7 +31,7 @@ export function EngineSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
             >
-              <GlowCard className="h-full">
+              <GlowCard className="h-full flex flex-col">
                 <div className="flex items-start justify-between mb-5">
                   <div className="w-11 h-11 rounded-full bg-teal-lighter flex items-center justify-center">
                     <Icon className="w-5 h-5 text-teal" />
@@ -40,11 +41,53 @@ export function EngineSection() {
                   </span>
                 </div>
                 <h3 className="font-semibold text-lg mb-3 text-ink">{card.title}</h3>
-                <p className="text-ink-muted text-sm leading-relaxed">{card.description}</p>
+                <p className="text-ink-muted text-sm leading-relaxed mb-5">{card.description}</p>
+                <ul className="mt-auto space-y-1.5 pt-4 border-t border-teal/10">
+                  {card.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-xs text-ink-muted">
+                      <span className="text-coral mt-[3px] leading-none">·</span>
+                      <span className="leading-snug">{b}</span>
+                    </li>
+                  ))}
+                </ul>
               </GlowCard>
             </motion.div>
           )
         })}
+      </div>
+
+      <div className="mt-20 max-w-5xl mx-auto">
+        <div className="flex items-center gap-4 mb-10">
+          <div className="flex-1 h-px bg-teal/15" />
+          <p className="text-teal text-[11px] font-bold tracking-[0.3em] uppercase">
+            {ENGINE.pipelineLabel}
+          </p>
+          <div className="flex-1 h-px bg-teal/15" />
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {ENGINE.pipeline.map((phase, i) => {
+            const Icon = phaseIcons[phase.icon]
+            return (
+              <motion.div
+                key={phase.title}
+                initial={{ y: 12 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07, duration: 0.4 }}
+                className="bg-white/60 border border-teal/10 rounded-xl p-5"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 rounded-full bg-teal flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-4 h-4 text-white" />
+                  </div>
+                  <h4 className="font-semibold text-sm text-ink">{phase.title}</h4>
+                </div>
+                <p className="text-ink-muted text-xs leading-relaxed">{phase.body}</p>
+              </motion.div>
+            )
+          })}
+        </div>
       </div>
 
       <p className="mt-14 text-center text-ink-muted text-sm max-w-2xl mx-auto">
